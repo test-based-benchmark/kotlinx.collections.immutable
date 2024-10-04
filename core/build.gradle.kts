@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 plugins {
     id("kotlin-multiplatform")
     `maven-publish`
+    id("org.jetbrains.kotlinx.kover")
 }
 
 base {
@@ -165,4 +166,13 @@ with(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin.apply(rootPr
 // Drop this when node js version become stable
 tasks.withType<org.jetbrains.kotlin.gradle.targets.js.npm.tasks.KotlinNpmInstallTask>().configureEach {
     args.add("--ignore-engines")
+}
+
+
+tasks.named("koverHtmlReport") {
+    dependsOn(tasks.named("jvmTest"))
+}
+
+tasks.named("koverXmlReport") {
+    dependsOn(tasks.named("jvmTest"))
 }

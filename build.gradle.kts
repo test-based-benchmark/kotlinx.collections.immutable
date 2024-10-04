@@ -9,6 +9,8 @@ buildscript {
 plugins {
     id("kotlinx.team.infra") version "0.4.0-dev-80"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.16.3"
+
+    id("org.jetbrains.kotlinx.kover") version "0.8.3" apply true
 }
 
 infra {
